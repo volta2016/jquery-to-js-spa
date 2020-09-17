@@ -9,7 +9,81 @@
 </head>
 <body>
   
-  
+  <section class="home" id="home">
+    <div class="home-sidebar">
+      <div class="sidebar">
+        <div class="logo">
+          <figure class="logo-image">
+            <img src="src/images/logo-pelis.svg" alt="Pelis - la Plataforma de peliculas"/>
+          </figure>
+        </div>
+        <div class="sidebarPlaylist">
+          <h2 class="sidebarPlaylist-title">Mi Playlist <span class="btn warning">Escuchar Playlist</span> </h2>
+          <ul class="myPlaylist" id="movieSugestion">
+            
+          </ul>
+        </div>
+        <div class="sidebarPlaylist">
+          <h2 class="sidebarPlaylist-title">Playlist de amigos</h2>
+          <ul class="playlistFriends" id="playlistFriends">
+           
+          </ul>
+        </div>
+      </div>
+
+    </div>
+    <div class="home-primary">
+      <!-- <section class="primary"> -->
+        <div class="primary-search">
+          <form action="" class="search" id="form">
+            <input type="text" name="name" placeholder="Buscar un artista o tema favorito"/>
+          </form>
+        </div>
+        <div class="primary-user">
+          <div class="user">
+            <p>
+              <img src="src/images/covers/gorillaz.jpg" alt=""/>
+              <span>User nickname</span>
+            </p>
+          </div>
+        </div>
+        <div class="primary-list">
+          <div class="primaryPlaylist">
+            <h3 class="primaryPlaylist-topic">A los golpes</h3>
+            <h2 class="primaryPlaylist-title">Acción</h2>
+            <div class="primaryPlaylist-list" id="action">
+              <img src="src/images/loader.gif" width="50" height="50" alt="">
+            </div>
+          </div>
+          <div class="primaryPlaylist">
+            <h3 class="primaryPlaylist-topic">Para llorar</h3>
+            <h2 class="primaryPlaylist-title">Drama</h2>
+            <div class="primaryPlaylist-list" id="drama">
+              <img src="src/images/loader.gif" width="50" height="50" alt="">
+            </div>
+          </div>
+          <div class="primaryPlaylist">
+            <h3 class="primaryPlaylist-topic">Dibujitos animados</h3>
+            <h2 class="primaryPlaylist-title">Animación</h2>
+            <div class="primaryPlaylist-list" id="animation">
+              <img src="src/images/loader.gif" width="50" height="50" alt="">
+            </div>
+          </div>
+        </div>
+      <!-- </section> -->
+    </div>
+    <div class="home-featuring" id="featuring">
+      <div class="featuring">
+        <div class="featuring-image">
+          <img src="src/images/covers/solar-sailer.jpg" width="70" height="100" alt="">
+        </div>
+        <div class="featuring-content">
+          <p class="featuring-title">Pelicula encontrada</p>
+          <p class="featuring-album">titulo de la peli</p>
+        </div>
+      </div>
+    </div>
+  </section>  
 
  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
