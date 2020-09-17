@@ -1,4 +1,50 @@
 // console.log('hola mundo');
+//::programa Escuchar Playlist::
+(async function suggestionsMovie() {
+    async function getMovieNew(url) {
+        const response = await fetch(url);
+        const data = await response.json();
+        console.log(response);//
+        return data;
+    }
+
+    const  {
+        data: { movies: suggestions}
+    } = await getMovieNew('https://yts.mx/api/v2/list_movies.json?sort=seeds&limit=15');
+    
+    console.log('suggestions', suggestions)
+    function suggestionItemTemplate(movie) {
+        //ojo que esto es puro texto debemos pasarlo a element html
+        return (
+            `<ul class="playlistFriends" id="movieSugestion">
+                <li class="playlistFriends-item">
+                <a href="#">
+                    <img src="${movie.medium_cover_image}" alt="${movie.title}" />
+                    <span>
+                    ${movie.title}
+                    </span>
+                </a>
+                </li>
+            </ul>`
+        )
+    }
+
+    function createTemplate(HTMLString) {
+        const html = document.implementation.createHTMLDocument();
+        html.body.innerHTML = HTMLString;
+        return html.body.children[0];
+    }
+    const containerSuggestions = document.getElementById('movieSugestion');
+    suggestions.forEach((movie) => {
+        const HTMLSting = suggestionItemTemplate(movie);
+        const suggestionsElement  = createTemplate(HTMLSting);
+        containerSuggestions.append(suggestionsElement);
+
+    });
+
+})();
+
+
 
 //::programa Playlist amigos::
 // los parentesis envuelven la funcion asincronoa y hacen que esta se autoejecute(funcion contenedora)
