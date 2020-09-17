@@ -1,7 +1,74 @@
 // console.log('hola mundo');
 
+//::programa Playlist amigos::
+// los parentesis envuelven la funcion asincronoa y hacen que esta se autoejecute(funcion contenedora)
+(async function loadUser() {
+    //programa donde retorno a mi usuario
+    async function getUser(url){
+        const response = await fetch(url);
+        //la peticion realiza su respuesta tiene un metodo.json()
+        const data = await response.json();
+        if (data.info.count > 0) {
+            return data;
+        } else {
+            throw new Error ('No se ha encotrado datos')
+        }
 
-//programa seatch movie
+    }
+    //guardamos la URL de la API donde vamos a buscar los datos
+    const friendsAPI = 'https://rickandmortyapi.com/api/';
+    //guardamos en variable los contenedores de contactos
+    const $myPlayList = document.getElementById('myPlaylist');
+    const $playListFriends = document.getElementById('playlistFriends');
+
+    //creo mi template para el playlistFriends-item
+    function friendItemTemplate(friend) {
+        // const nameComplete = `${user.name.first}${user.name.last}`
+        //ojo que esto es puro texto debemos pasarlo a element html
+        return (
+            `<li class="playlistFriends-item">
+                <a href="#">
+                <img src="https://rickandmortyapi.com/api/character/avatar/${friend.id}.jpeg" alt="${friend.species}"/>
+                <span>
+                    ${friend.name}
+                </span>
+                </a>
+            </li>`
+        )
+    }
+
+    function createTemplate(HTMLString) {
+        const html = document.implementation.createHTMLDocument();
+        html.body.innerHTML = HTMLString;
+        return html.body.children[0];
+    }
+   //funcion para insertar el arrayFriends en la seccion de contactos
+    function renderFriendList(list, template, $friendsContainer) {
+        list.forEach((user) => {
+            //generamos el template html
+            const HTMLSting = template(user);
+            //convertimos a HTML el string
+            const userFriend = createTemplate(HTMLSting);
+            $friendsContainer.append(userFriend);
+        })
+    }
+    //Traemos la lista de amigos desde la API
+    const friendData = await getUser(`${friendsAPI}character/`);
+    console.log(friendData);
+    //guardamos los datos
+    const arrayFriends = []
+    friendData.results.forEach(character => {
+        arrayFriends.push(character);
+    });
+
+    //insertamos los datos del array en el HTML
+    renderFriendList(arrayFriends,  friendItemTemplate, $playListFriends);
+})();
+
+
+
+
+//::programa search movie::
 (async function load() {
     //await
     //action
