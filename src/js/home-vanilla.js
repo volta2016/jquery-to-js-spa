@@ -285,7 +285,7 @@
         const id = $element.dataset.id;
         const category = $element.dataset.category
         const data = findMovie(id, category); 
-        debugger
+        
         $modalTitle.textContent = data.title;
         $modalImage.setAttribute('src', data.medium_cover_image); 
         $modalDescription.textContent = data.description_full;
